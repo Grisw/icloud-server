@@ -1,0 +1,12 @@
+server:
+  port: 8083
+
+eureka:
+  client:
+    serviceUrl:
+      fetchRegistry: false
+      defaultZone: ${EUREKA_SERVERS:http://localhost:8081/eureka}
+
+spring:
+  application:
+    name: icloud-server
