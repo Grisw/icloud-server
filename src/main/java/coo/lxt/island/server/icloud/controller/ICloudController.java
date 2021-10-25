@@ -1,16 +1,23 @@
 package coo.lxt.island.server.icloud.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import coo.lxt.island.common.icloud.api.IICloudApi;
+import coo.lxt.island.common.icloud.vo.ICloudAuthVO;
+import coo.lxt.island.common.icloud.vo.ICloudSessionVO;
+import coo.lxt.island.server.icloud.service.ICloudService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/icloud")
-public class ICloudController {
+public class ICloudController implements IICloudApi {
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam("name") String name) {
-        return "Hello. " + name;
+    @Autowired
+    private ICloudService iCloudService;
+
+    @Override
+    public ICloudSessionVO login(ICloudAuthVO authVO) throws IOException {
+        return iCloudService.login(authVO);
     }
 }
