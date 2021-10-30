@@ -10,3 +10,17 @@ eureka:
 spring:
   application:
     name: icloud-server
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:3306/island?useUnicode=true&characterEncoding=UTF-8
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+  jpa:
+    database: MySQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: 6379
+    password: ${REDIS_PASSWORD:123456}
